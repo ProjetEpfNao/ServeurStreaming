@@ -1,0 +1,3 @@
+- hosts:: '{{ target }}'
+  tasks:
+    - include: 'roles/streaming_server/tasks/install_ffserver.yml'

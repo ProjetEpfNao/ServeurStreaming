@@ -1,0 +1,16 @@
+- name: FFSERVER | Adding ppa for ffserver
+  apt_repository: repo='ppa:mc3man/trusty-media'
+
+- name: FFSERVER | Updating apt cache
+  apt:
+    update_cache: yes
+
+- name: FFSERVER | Installing FFSERVER
+  apt:
+    pkg: ffmpeg
+    state: latest
+
+- name: FFSERVER | Writing FFSERVER configuration
+  copy:
+    src: ../templates/ffserver.conf
+    dest: /etc/ffserver.conf

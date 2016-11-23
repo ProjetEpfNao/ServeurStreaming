@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "Attempting to install boto & ansible."
+sudo -H python2.7 -m pip install boto
+sudo -H python2.7 -m pip install ansible
+
+echo "Creating ssh-agent for EC2 instances."
+ssh-agent 
+ssh-add ~/.ssh/AnsibleDemo.pem
+
+echo "Setting AWS keys env vars."
+source setup_secret
+
+echo "Setting ANSIBLE EC2 dynamic host list."
+export ANSIBLE_HOSTS=ec2.py
+export EC2_INI_PATH=ec2.ini 
+

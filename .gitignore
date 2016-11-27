@@ -1,2 +1,4 @@
 deploy.retry
 setup_secret
+venv
+uploads

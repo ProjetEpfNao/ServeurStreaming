@@ -1,0 +1,20 @@
+- name: PIP | Check for previous installation
+  command: "pip --version"
+  ignore_errors: true
+  changed_when: false
+  always_run: true
+  register: pip_is_installed
+
+
+- name: PIP | Downloading PIP
+  get_url: 
+    url: https://bootstrap.pypa.io/get-pip.py
+    dest: /tmp/get-pip.py
+  become: yes
+  when: pip_is_installed.rc != 0
+
+- name: PIP | Installing PIP
+  command: "python /tmp/get-pip.py"
+  become: yes
+  when: pip_is_installed.rc != 0
+

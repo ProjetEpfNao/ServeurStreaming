@@ -1,0 +1,25 @@
+- name: FLASK | Installing FLASK
+  pip: name=flask
+  become: yes
+
+- name: FLASK | Add dir for app
+  file: 
+    path: /home/ubuntu/flask_app
+    state: directory
+  become: yes
+
+- name: FLASK | Add dir for uploads
+  file: 
+    path: /home/ubuntu/flask_app/uploads
+    state: directory
+  become: yes
+
+- name: FLASK | Copying FLASK app to directory
+  copy:
+    src: ../templates/flask_app.py
+    dest: /home/ubuntu/flask_app/flask_app.py
+  become: yes
+
+- name: FLASK | Run FLASK app
+  shell: python /home/ubuntu/flask_app/flask_app.py &
+  become: yes

@@ -1,3 +1,5 @@
 - hosts: all
   tasks:
     - include: 'roles/streaming_server/tasks/install_ffserver.yml'
+    - include: 'roles/streaming_server/tasks/install_pip.yml'
+    - include: 'roles/streaming_server/tasks/install_flask_middleman.yml'

@@ -5,10 +5,10 @@ import threading
 import sys
 from flask import Flask, request
 
-FFSERVER_URL = "http://54.84.19.127:8090/feed1.ffm"
+FFSERVER_URL = "http://localhost:8090/feed1.ffm"
 LENGTH = 4
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['UPLOAD_FOLDER'] = '/home/ubuntu/flask_app/uploads'
 
 file_counter = 10
 
@@ -41,7 +41,7 @@ def run_stream():
 def upload():
     global file_counter
     file = request.files['file']
-    filename = str(file_counter) + ".mp4"
+    filename = str(file_counter) + ".avi"
     file_counter += 1
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(path)

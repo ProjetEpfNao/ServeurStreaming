@@ -2,7 +2,7 @@
   command: "pip --version"
   ignore_errors: true
   changed_when: false
-  always_run: true
+  check_mode: no
   register: pip_is_installed
 
 
